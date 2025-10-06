@@ -1,7 +1,12 @@
-import { FeatureCard } from "@/components/FeatureCard";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, HandCoins, Heart, Shield, Zap } from "lucide-react";
+// app/page.jsx (Server Component)
 
+import { FeatureCard } from "@/components/FeatureCard";
+// Importamos o novo componente cliente:
+import { SignInButton } from "@/components/SignInButton"; 
+
+import { HandCoins, Heart, Shield, Zap } from "lucide-react";
+
+// OBS: As funções e imports de signIn e handleRegister foram removidos
 
 export default function Home() {
   return (
@@ -28,24 +33,14 @@ export default function Home() {
               </h1>
 
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Receba doações diretamente dos seus seguidores através de uma página personalizada e elegante, sem
-                complicações.
+                Receba doações diretamente dos seus seguidores através de uma página personalizada e elegante, sem complicações.
               </p>
 
               <div className="pt-4">
-                <form>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-8 h-12"
-                  >
-                    Começar agora
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
+                
+                <SignInButton />
               </div>
             </div>
-
           </div>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
