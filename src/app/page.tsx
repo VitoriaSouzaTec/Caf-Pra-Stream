@@ -15,7 +15,7 @@ export default function Home() {
         <div className="flex items-center">
           <div className="flex items-center text-amber-500 font-bold text-xl">
             <HandCoins className="h-6 w-6 mr-2" />
-            <span>ApoiaDev</span>
+            <span>Café Para Stream</span>
           </div>
         </div>
       </header>

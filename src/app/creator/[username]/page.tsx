@@ -11,6 +11,7 @@ async function getUserByUsername(username: string) {
   const user = await prisma.user.findUnique({
     where: { username: username },
     select: {
+      id: true, // Adiciona o campo 'id'
       name: true,
       image: true,
       bio: true, // Se você tiver o campo 'bio' no seu modelo User
@@ -92,7 +93,7 @@ export default async function Apoia({
           <h3 className="font-semibold text-lg">
             {profileUser.name ? `Apoiar ${profileUser.name}` : "Apoiar Criador"}
           </h3>
-          <FormDonate/>
+          <FormDonate slug={username} creatorId={profileUser.id} />
         </section>
       </div>
     </div>

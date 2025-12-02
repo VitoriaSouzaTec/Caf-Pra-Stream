@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apoia Dev",
+  title: "Café para Stream",
   description: "joy money",
 };
 

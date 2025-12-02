@@ -13,7 +13,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
+import { string, z } from "zod"
+import createPayment from '../_actions/create-payment'
 
 const formSchema = z.object({
   name: z.string().min(1, "O nome é obrigatório"),
@@ -25,18 +26,34 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>
 
-export function FormDonate() {
+interface formDonateProps{
+  slug: string; 
+  creatorId: string;
+}
+
+
+export function FormDonate({slug, creatorId}: formDonateProps) {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       message: "",
-      price: "15",
+      price: undefined,
     },
   })
 
-  function onSubmit(values: FormData) {
-    console.log(values)
+ async function onSubmit(data: FormData) {
+  const priceInCents = Number(data.price) * 100;
+
+  const checkout = await createPayment({
+      name: data.name,
+      message: data.message,
+      creatorId: creatorId,
+      slug: slug,
+      price: priceInCents,
+    })
+
+    console.log(checkout)
   }
 
   return (
